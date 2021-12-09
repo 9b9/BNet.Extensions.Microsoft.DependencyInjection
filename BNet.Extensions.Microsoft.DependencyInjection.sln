@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C3DD5A3B-E709-477C-9601-D4235D099EA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNet.Extensions.Microsoft.DependencyInjection", "src\BNet.Extensions.Microsoft.DependencyInjection\BNet.Extensions.Microsoft.DependencyInjection.csproj", "{5CF1B118-FD4C-4BB0-A57E-DA5E6E3D9D33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FBF6DB74-C22A-41D9-87AC-6C5685E2C4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNet.Extensions.Microsoft.DependencyInjection.Tests", "tests\BNet.Extensions.Microsoft.DependencyInjection.Tests\BNet.Extensions.Microsoft.DependencyInjection.Tests.csproj", "{992BBD01-80D4-4A2C-9095-9DDC3F802640}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CF1B118-FD4C-4BB0-A57E-DA5E6E3D9D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF1B118-FD4C-4BB0-A57E-DA5E6E3D9D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF1B118-FD4C-4BB0-A57E-DA5E6E3D9D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF1B118-FD4C-4BB0-A57E-DA5E6E3D9D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992BBD01-80D4-4A2C-9095-9DDC3F802640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992BBD01-80D4-4A2C-9095-9DDC3F802640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992BBD01-80D4-4A2C-9095-9DDC3F802640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992BBD01-80D4-4A2C-9095-9DDC3F802640}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5CF1B118-FD4C-4BB0-A57E-DA5E6E3D9D33} = {C3DD5A3B-E709-477C-9601-D4235D099EA3}
+		{992BBD01-80D4-4A2C-9095-9DDC3F802640} = {FBF6DB74-C22A-41D9-87AC-6C5685E2C4B3}
+	EndGlobalSection
+EndGlobal
