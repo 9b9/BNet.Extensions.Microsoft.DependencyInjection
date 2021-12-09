@@ -13,11 +13,11 @@ jobs:
       DOCKER_IMAGE_NAME: bnet.extensions.microsoft.dependencyinjection
       CONTAINER_NAME: bnet.extensions.microsoft.dependencyinjectioncontainer
     steps:
-    - name: Set outputs
-      id: vars
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"    
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Set outputs
+      id: vars
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"          
     - name: Build and start container from build image
       run: |
         docker build --target pack --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }} .
