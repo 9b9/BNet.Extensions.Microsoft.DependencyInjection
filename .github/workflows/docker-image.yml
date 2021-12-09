@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --target pack --file Dockerfile --tag BNet.Extensions.Microsoft.DependencyInjection:$(date +%s)
+      run: docker build . --target pack --file Dockerfile --tag bnet.extensions.microsoft.dependencyinjection:$(date +%s)
