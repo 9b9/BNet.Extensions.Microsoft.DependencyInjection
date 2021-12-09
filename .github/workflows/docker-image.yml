@@ -22,10 +22,9 @@ jobs:
       run: |
         docker build --target pack --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }} .
         docker run --name ${{ env.CONTAINER_NAME }} ${{ env.DOCKER_IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}
-        docker cp ${{ env.CONTAINER_NAME }}:/testresults TestResults
     - name: Copy container build output
       run:
-        docker cp ${{ env.CONTAINER_NAME }}:/testresults TestResults
+        docker cp ${{ env.CONTAINER_NAME }}:/code/testresults TestResults
     - name: Test Reporter
       uses: dorny/test-reporter@v1.5.0
       if: success() || failure()    # run this step even if previous step failed
