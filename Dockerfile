@@ -40,7 +40,7 @@ RUN dotnet test `
     --runtime $RID `
     /p:Version=$RELEASE_VER `
     --no-restore `
-    --results-directory ./testresults `
+    --results-directory /code/testresults `
     --logger "trx"
 
 FROM build AS pack
