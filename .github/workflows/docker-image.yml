@@ -10,15 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DOCKER_IMAGE_NAME: bnet.extensions.microsoft.dependencyinjection:$(date +%s)
+      DOCKER_IMAGE_NAME: bnet.extensions.microsoft.dependencyinjection
       CONTAINER_NAME: bnet.extensions.microsoft.dependencyinjectioncontainer
     steps:
+    - name: Set outputs
+      id: vars
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"    
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build and start container from build image
       run: |
-        docker build --target pack --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }} .
-        docker run --name ${{ env.CONTAINER_NAME }} ${{ env.DOCKER_IMAGE_NAME }}
+        docker build --target pack --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }} .
+        docker run --name ${{ env.CONTAINER_NAME }}:${{ steps.vars.outputs.sha_short }} ${{ env.DOCKER_IMAGE_NAME }}
     - name: Copy container build output
       run:
         docker cp ${{ env.CONTAINER_NAME }}:/testresults TestResults
