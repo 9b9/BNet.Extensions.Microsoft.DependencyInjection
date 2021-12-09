@@ -7,12 +7,25 @@ on:
     branches: [ main ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      DOCKER_IMAGE_NAME: bnet.extensions.microsoft.dependencyinjection:$(date +%s)
+      CONTAINER_NAME: bnet.extensions.microsoft.dependencyinjectioncontainer
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --target pack --file Dockerfile --tag bnet.extensions.microsoft.dependencyinjection:$(date +%s)
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build and start container from build image
+      run: |
+        docker build --target pack --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }} .
+        docker run --name ${{ env.CONTAINER_NAME }} ${{ env.DOCKER_IMAGE_NAME }}
+    - name: Copy container build output
+      run:
+        docker cp ${{ env.CONTAINER_NAME }}:/testresults TestResults
+    - name: Test Reporter
+      uses: dorny/test-reporter@v1.5.0
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+        name: dotnet Tests            # Name of the check run which will be created
+        path: TestResults/*.trx    # Path to test results
+        reporter: dotnet-trx        # Format of test results
